@@ -25,7 +25,7 @@ class s3file(object):
         aws_secret_access_key=None,
     ):
         """Opens a local copy of an S3 URL."""
-        parse = urlparse.urlparse(filename)
+        parse = urlparse(filename)
         if 'w' in mode:
             raise ValueError("can't write to S3")
         if parse.scheme != 's3':
@@ -37,8 +37,8 @@ class s3file(object):
         )
         bucket = conn.get_bucket(parse.netloc)
         key = bucket.get_key(parse.path)
-
-        local_file = tempfile.TemporaryFile()
+        local_file = tempfile.TemporaryFile(mode=tempfilemode)
         key.get_contents_to_file(local_file)
         local_file.seek(0)
+        return open(local_file, mode=mode)
         return local_file
