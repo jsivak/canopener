@@ -3,7 +3,7 @@ from __future__ import absolute_import
 from __future__ import unicode_literals
 
 import tempfile
-import urlparse
+from six.moves.urllib.parse import urlparse
 
 from boto.s3.connection import S3Connection
 
