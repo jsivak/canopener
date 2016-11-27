@@ -76,6 +76,6 @@ class canopener(object):
         if filename.endswith('.gz'):
             return gzfile(fileobj=base_file, mode=mode)
         elif filename.endswith('.bz2'):
-            return bz2file(base_file, mode)
+            return bz2file(filename, mode)
         else:
             return base_file
