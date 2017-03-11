@@ -2,8 +2,12 @@
 from __future__ import absolute_import
 from __future__ import unicode_literals
 
+try:
+    from urllib.parse import urlparse
+except ImportError:
+    from urlparse import urlparse
+
 import tempfile
-from six.moves.urllib.parse import urlparse
 
 from boto.s3.connection import S3Connection
 

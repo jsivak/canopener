@@ -2,10 +2,15 @@
 from __future__ import absolute_import
 from __future__ import unicode_literals
 
+try:
+    from urllib.request import urlopen
+    from urllib.parse import urlparse
+except:
+    from urllib2 import urlopen
+    from urlparse import urlparse
+
 import bz2
 import gzip
-from six.moves.urllib.request import urlopen
-from six.moves.urllib.parse import urlparse
 
 from canopener.s3file import s3file
 
